@@ -6,7 +6,6 @@
 <title>Vijith Business</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
@@ -21,13 +20,12 @@ text-align:center;
 }
 
 header h1{
-font-size:40px;
+font-size:36px;
 margin:0;
 }
 
 header p{
 font-size:18px;
-margin-top:10px;
 }
 
 .btn{
@@ -63,10 +61,9 @@ box-shadow:0 0 10px rgba(0,0,0,0.1);
 footer{
 background:black;
 color:white;
-text-align:center;
 padding:20px;
+text-align:center;
 }
-
 </style>
 </head>
 
@@ -76,14 +73,14 @@ padding:20px;
 <h1>Welcome to Vijith Business</h1>
 <p>Professional Business Services</p>
 
-<a class="btn" href="#">
-Contact Us
+<a class="btn" href="https://wa.me/91XXXXXXXXXX">
+Contact on WhatsApp
 </a>
 </header>
 
 <section>
 <h2>About Us</h2>
-<p>We provide trusted and quality business services for customers.</p>
+<p>We provide trusted and quality business services.</p>
 </section>
 
 <section>
@@ -93,17 +90,17 @@ Contact Us
 
 <div class="box">
 <h3>Service 1</h3>
-<p>Professional solutions for your needs.</p>
+<p>Best service for customers</p>
 </div>
 
 <div class="box">
 <h3>Service 2</h3>
-<p>Quality and trusted support.</p>
+<p>Quality guaranteed</p>
 </div>
 
 <div class="box">
 <h3>Service 3</h3>
-<p>Customer satisfaction guaranteed.</p>
+<p>Trusted support</p>
 </div>
 
 </div>
