@@ -1,77 +1,445 @@
- 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vijith Business</title>
+<title>Vijith Bussing</title>
 
 <style>
-body{
+
+*{
 margin:0;
-font-family:Arial;
-background:#f5f5f5;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+scroll-behavior:smooth;
 }
 
-header{
+body{
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:url('IMG-20260506-WA0029.jpg') center/cover no-repeat;
+position:relative;
+display:flex;
+align-items:center;
+padding:30px;
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:500px;
+animation:fadeUp 1.5s ease;
+}
+
+.hero-content h1{
+font-size:60px;
+line-height:1.1;
+margin-bottom:20px;
+text-transform:uppercase;
+animation:glow 2s infinite alternate;
+}
+
+.hero-content p{
+font-size:20px;
+margin-bottom:25px;
+}
+
+.hero-btn{
+display:inline-block;
+padding:14px 30px;
+border:2px solid white;
+color:white;
+text-decoration:none;
+font-size:18px;
+transition:0.4s;
+}
+
+.hero-btn:hover{
 background:white;
-color:blue;
+color:black;
+}
+
+/* MENU */
+
+.menu{
+position:absolute;
+top:25px;
+right:25px;
+font-size:42px;
+z-index:999;
+cursor:pointer;
+}
+
+#menuBox{
+position:fixed;
+top:0;
+right:-100%;
+width:80%;
+height:100%;
+background:#111;
+z-index:9999;
+padding:40px 30px;
+transition:0.5s;
+}
+
+.menu-link{
+display:block;
+color:white;
+text-decoration:none;
+font-size:30px;
+margin:30px 0;
+font-weight:bold;
+transition:0.3s;
+}
+
+.menu-link:hover{
+color:#00aaff;
+padding-left:10px;
+}
+
+/* ABOUT */
+
+.about{
 padding:80px 20px;
 text-align:center;
+background:#111;
 }
 
-header h1{
-font-size:36px;
-margin:0;
+.about h2{
+font-size:45px;
+margin-bottom:20px;
+animation:glow 2s infinite alternate;
 }
-<style>
-body{
-...
+
+.about p{
+max-width:800px;
+margin:auto;
+line-height:1.8;
+font-size:18px;
+color:#ccc;
 }
+
+/* PRODUCTS */
+
+.products{
+padding:70px 20px;
+background:#000;
+}
+
+.products h2{
+text-align:center;
+font-size:45px;
+margin-bottom:35px;
+animation:glow 2s infinite alternate;
+}
+
+.product-scroll{
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding-bottom:15px;
+}
+
+.product-scroll::-webkit-scrollbar{
+height:6px;
+}
+
+.product-scroll::-webkit-scrollbar-thumb{
+background:#444;
+border-radius:20px;
+}
+
+.card{
+min-width:280px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 20px rgba(255,255,255,0.08);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px rgba(0,170,255,0.6);
+}
+
+.card img{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.price{
+font-size:25px;
+color:#00aaff;
+margin-bottom:20px;
+font-weight:bold;
+}
+
+.order-btn{
+display:block;
+text-align:center;
+padding:14px;
+background:#00aaff;
+color:white;
+text-decoration:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+transition:0.4s;
+}
+
+.order-btn:hover{
+background:white;
+color:black;
+}
+
+/* CONTACT */
+
+.contact{
+padding:80px 20px;
+text-align:center;
+background:#111;
+}
+
+.contact h2{
+font-size:45px;
+margin-bottom:20px;
+}
+
+.contact p{
+font-size:20px;
+margin-bottom:20px;
+}
+
+.contact a{
+color:#00aaff;
+font-size:22px;
+text-decoration:none;
+}
+
+/* AI CHAT */
+
+#chatBtn{
+position:fixed;
+bottom:25px;
+right:20px;
+width:65px;
+height:65px;
+background:#00c853;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+cursor:pointer;
+z-index:9999;
+}
+
+#chatBox{
+position:fixed;
+bottom:100px;
+right:20px;
+width:320px;
+height:450px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+display:none;
+flex-direction:column;
+z-index:9999;
+}
+
+.chat-header{
+background:#00aaff;
+padding:18px;
+font-size:20px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+}
+
+.chat-body{
+flex:1;
+padding:15px;
+overflow-y:auto;
+background:#181818;
+}
+
+.bot,.user{
+padding:12px 15px;
+margin:10px 0;
+border-radius:15px;
+max-width:80%;
+}
+
+.bot{
+background:#222;
+}
+
+.user{
+background:#00aaff;
+margin-left:auto;
+}
+
+.chat-input{
+display:flex;
+padding:10px;
+background:#111;
+}
+
+.chat-input input{
+flex:1;
+padding:12px;
+border:none;
+outline:none;
+border-radius:10px;
+}
+
+.chat-input button{
+margin-left:10px;
+padding:12px 18px;
+border:none;
+background:#00aaff;
+color:white;
+border-radius:10px;
+}
+
+/* EFFECTS */
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px #00aaff;
+}
+to{
+text-shadow:0 0 30px #00aaff;
+}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 </style>
-
-<body>
-
-
 </head>
 
 <body>
 
-<header>
-<h1>Welcome to Vijith Business</h1>
-<p>Professional Business Services</p>
+<!-- MENU -->
 
-<a href="https://api.whatsapp.com/send?phone=918891416068" target="_blank">
-  WhatsApp
+<div id="menuBox">
+
+<div onclick="closeMenu()" style="font-size:40px;cursor:pointer;">
+✕
+</div>
+
+<a href="#home" class="menu-link">Home</a>
+<a href="#about" class="menu-link">About</a>
+<a href="#products" class="menu-link">Products</a>
+<a href="#contact" class="menu-link">Contact</a>
+
+</div>
+
+<div class="menu" onclick="openMenu()">
+☰
+</div>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>
+Anime<br>
+3D Models
+</h1>
+
+<p>
+Premium anime models, wedding gifts and customized 3D printed designs.
+</p>
+
+<a href="#products" class="hero-btn">
+Explore Products
 </a>
-</a>
-</header>
 
-><section style="padding:40px 20px;background:#f5f5f5;overflow-x:auto;white-space:nowrap;">
+</div>
 
-<h2 style="text-align:center;font-size:40px;margin-bottom:30px;">
-Our Products
-</h2>
+</section>
 
-<div style="display:flex;gap:20px;">
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<h2>About Us</h2>
+
+<p>
+We create premium anime models, wedding gifts,
+customer gifts and customized 3D printed models with professional finishing.
+</p>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products" id="products">
+
+<h2>Our Products</h2>
+
+<div class="product-scroll">
 
 <!-- CARD 1 -->
 
-<div style="background:white;min-width:280px;border-radius:20px;
-overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.15);">
+<div class="card">
 
-<img src="IMG-20260506-WA0030.jpg"
-style="width:100%;height:280px;object-fit:cover;">
+<img src="IMG-20260506-WA0030.jpg">
 
-<div style="padding:15px;">
+<div class="card-content">
 
 <h3>Anime Model</h3>
 
-<h2>₹599</h2>
+<div class="price">
+₹599
+</div>
 
-<a href="https://api.whatsapp.com/send?phone=918891416068"
-target="_blank"
-style="display:block;text-align:center;background:#1f3b73;color:white;
-padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;">
+<a href="https://wa.me/918891416068"
+class="order-btn">
 
 Order Now
 
@@ -79,26 +447,23 @@ Order Now
 
 </div>
 </div>
-
 
 <!-- CARD 2 -->
 
-<div style="background:white;min-width:280px;border-radius:20px;
-overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.15);">
+<div class="card">
 
-<img src="IMG-20260506-WA0031.jpg"
-style="width:100%;height:280px;object-fit:cover;">
+<img src="IMG-20260506-WA0031.jpg">
 
-<div style="padding:15px;">
+<div class="card-content">
 
 <h3>Wedding Gift</h3>
 
-<h2>₹799</h2>
+<div class="price">
+₹799
+</div>
 
-<a href="https://api.whatsapp.com/send?phone=918891416068"
-target="_blank"
-style="display:block;text-align:center;background:#1f3b73;color:white;
-padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;">
+<a href="https://wa.me/918891416068"
+class="order-btn">
 
 Order Now
 
@@ -106,57 +471,148 @@ Order Now
 
 </div>
 </div>
-
 
 <!-- CARD 3 -->
 
-<div style="background:white;min-width:280px;border-radius:20px;
-overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.15);">
+<div class="card">
 
-<img src="IMG-20260506-WA0032.jpg"
-style="width:100%;height:280px;object-fit:cover;">
+<img src="IMG-20260506-WA0032.jpg">
 
-<div style="padding:15px;">
+<div class="card-content">
 
 <h3>Custom Gift</h3>
 
-<h2>₹999</h2>
+<div class="price">
+₹999
+</div>
 
-<a href="https://api.whatsapp.com/send?phone=918891416068"
-target="_blank"
-style="display:block;text-align:center;background:#1f3b73;color:white;
-padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;">
+<a href="https://wa.me/918891416068"
+class="order-btn">
 
 Order Now
-<img src="IMG-20260506-WA0033.jpg">
-<h3>Anime Statue</h3>
-<h2>₹1199</h2>
+
 </a>
 
 </div>
 </div>
 
 </div>
+
 </section>
 
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2>Contact</h2>
+
+<p>
+For Orders Contact Us On WhatsApp
+</p>
+
+<a href="https://wa.me/918891416068">
++91 8891416068
+</a>
+
+</section>
+
+<!-- AI CHAT -->
+
+<div id="chatBtn" onclick="openChat()">
+💬
+</div>
+
+<div id="chatBox">
+
+<div class="chat-header">
+AI Assistant
+<span onclick="closeChat()" style="cursor:pointer;">✕</span>
+</div>
+
+<div class="chat-body" id="chatBody">
+
+<div class="bot">
+Hello 👋<br>
+How can I help you?
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input type="text"
+id="userInput"
+placeholder="Type message...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function openMenu(){
+document.getElementById("menuBox").style.right="0";
+}
+
+function closeMenu(){
+document.getElementById("menuBox").style.right="-100%";
+}
+
+function openChat(){
+document.getElementById("chatBox").style.display="flex";
+}
+
+function closeChat(){
+document.getElementById("chatBox").style.display="none";
+}
+
+function sendMessage(){
+
+let input=document.getElementById("userInput");
+
+let message=input.value;
+
+if(message.trim()==="") return;
+
+let chatBody=document.getElementById("chatBody");
+
+chatBody.innerHTML += `
+<div class="user">
+${message}
+</div>
+`;
+
+let reply="Please contact us on WhatsApp 😊";
+
+if(message.toLowerCase().includes("price")){
+reply="Prices start from ₹599";
+}
+
+if(message.toLowerCase().includes("order")){
+reply="You can order directly through WhatsApp 👍";
+}
+
+if(message.toLowerCase().includes("anime")){
+reply="We create premium anime models 🔥";
+}
+
+chatBody.innerHTML += `
+<div class="bot">
+${reply}
+</div>
+`;
+
+input.value="";
+
+chatBody.scrollTop=chatBody.scrollHeight;
 
 }
-</style>
-</head>
 
-<footer>
-© 2026 Vijith business 
- <div style="background:white;width:250px;padding:15px;border-radius:15px;">
+</script>
 
-About Us
-</section>
-
-<header>
-...
-</header>
-
-  <p style="font-size:20px;max-width:800px;margin:auto;line-height:1.8;color:#555;">
-    We specialize in premium anime models, wedding couple gifts, customized customer gifts, personalized 3D printed models, creative statues, and unique handmade designs with high-quality finishing.
-  </p>
-
-</section>
+</body>
+</html>
