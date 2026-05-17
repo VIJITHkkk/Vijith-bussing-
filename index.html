@@ -1,22 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vijith Bussing</title>
+<title>Anime 3D Models</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
+font-family:'Poppins',sans-serif;
 background:#000;
 color:white;
 overflow-x:hidden;
@@ -30,7 +31,7 @@ background:url('IMG-20260506-WA0029.jpg') center/cover no-repeat;
 position:relative;
 display:flex;
 align-items:center;
-padding:30px;
+padding:40px;
 }
 
 .overlay{
@@ -39,36 +40,43 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.65);
 }
 
 .hero-content{
 position:relative;
 z-index:2;
-max-width:500px;
+max-width:600px;
 animation:fadeUp 1.5s ease;
 }
 
 .hero-content h1{
-font-size:60px;
+font-size:75px;
 line-height:1.1;
-margin-bottom:20px;
+font-weight:800;
 text-transform:uppercase;
-animation:glow 2s infinite alternate;
+
+background:linear-gradient(90deg,#00aaff,#ffffff,#00aaff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:glowText 3s infinite alternate;
 }
 
 .hero-content p{
-font-size:20px;
-margin-bottom:25px;
+font-size:24px;
+margin:25px 0;
+color:#ddd;
 }
 
 .hero-btn{
 display:inline-block;
-padding:14px 30px;
+padding:16px 35px;
 border:2px solid white;
 color:white;
 text-decoration:none;
-font-size:18px;
+font-size:20px;
+border-radius:12px;
 transition:0.4s;
 }
 
@@ -80,12 +88,19 @@ color:black;
 /* MENU */
 
 .menu{
-position:absolute;
-top:25px;
+position:fixed;
+top:20px;
 right:25px;
-font-size:42px;
-z-index:999;
+font-size:65px;
+z-index:9999;
 cursor:pointer;
+color:white;
+transition:0.3s;
+}
+
+.menu:hover{
+transform:scale(1.1);
+color:#00aaff;
 }
 
 #menuBox{
@@ -95,8 +110,8 @@ right:-100%;
 width:80%;
 height:100%;
 background:#111;
-z-index:9999;
-padding:40px 30px;
+z-index:99999;
+padding:50px 35px;
 transition:0.5s;
 }
 
@@ -104,58 +119,63 @@ transition:0.5s;
 display:block;
 color:white;
 text-decoration:none;
-font-size:30px;
-margin:30px 0;
-font-weight:bold;
+font-size:42px;
+margin:35px 0;
+font-weight:700;
 transition:0.3s;
 }
 
 .menu-link:hover{
 color:#00aaff;
-padding-left:10px;
+padding-left:15px;
+text-shadow:0 0 15px #00aaff;
 }
 
-/* ABOUT */
+/* SECTION */
 
-.about{
+section{
 padding:80px 20px;
+}
+
+.section-title{
 text-align:center;
+font-size:55px;
+margin-bottom:40px;
+font-weight:800;
+
+background:linear-gradient(90deg,#00aaff,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:glowText 3s infinite alternate;
+}
+
+/* SERVICE */
+
+.service{
 background:#111;
+text-align:center;
 }
 
-.about h2{
-font-size:45px;
-margin-bottom:20px;
-animation:glow 2s infinite alternate;
-}
-
-.about p{
-max-width:800px;
-margin:auto;
-line-height:1.8;
-font-size:18px;
-color:#ccc;
+.service p{
+font-size:24px;
+line-height:2;
+color:#ddd;
 }
 
 /* PRODUCTS */
 
 .products{
-padding:70px 20px;
 background:#000;
-}
-
-.products h2{
-text-align:center;
-font-size:45px;
-margin-bottom:35px;
-animation:glow 2s infinite alternate;
 }
 
 .product-scroll{
 display:flex;
 overflow-x:auto;
-gap:20px;
-padding-bottom:15px;
+gap:25px;
+padding:30px;
+scroll-behavior:smooth;
+scroll-snap-type:x mandatory;
 }
 
 .product-scroll::-webkit-scrollbar{
@@ -163,28 +183,52 @@ height:6px;
 }
 
 .product-scroll::-webkit-scrollbar-thumb{
-background:#444;
+background:#00aaff;
 border-radius:20px;
 }
 
+/* CARD */
+
 .card{
-min-width:280px;
+flex:0 0 auto;
+width:260px;
 background:#111;
 border-radius:20px;
 overflow:hidden;
-box-shadow:0 0 20px rgba(255,255,255,0.08);
-transition:0.4s;
-}
+scroll-snap-align:center;
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px rgba(0,170,255,0.6);
+transition:
+transform 0.5s ease,
+width 0.5s ease,
+box-shadow 0.5s ease;
+
+box-shadow:0 0 15px rgba(255,255,255,0.08);
 }
 
 .card img{
 width:100%;
-height:320px;
+height:300px;
 object-fit:cover;
+
+transition:
+height 0.5s ease,
+transform 0.5s ease;
+}
+
+.card:hover{
+width:340px;
+transform:scale(1.05);
+
+box-shadow:
+0 0 25px rgba(0,170,255,0.7),
+0 0 50px rgba(0,170,255,0.4);
+
+z-index:10;
+}
+
+.card:hover img{
+height:420px;
+transform:scale(1.05);
 }
 
 .card-content{
@@ -192,57 +236,58 @@ padding:20px;
 }
 
 .card h3{
-font-size:28px;
-margin-bottom:10px;
+font-size:32px;
+margin-bottom:12px;
+
+background:linear-gradient(90deg,#00aaff,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .price{
-font-size:25px;
+font-size:32px;
+font-weight:800;
 color:#00aaff;
-margin-bottom:20px;
-font-weight:bold;
+text-shadow:0 0 10px #00aaff;
+margin-bottom:18px;
 }
 
 .order-btn{
 display:block;
 text-align:center;
-padding:14px;
+padding:15px;
 background:#00aaff;
 color:white;
 text-decoration:none;
 border-radius:12px;
-font-size:18px;
-font-weight:bold;
+font-size:20px;
+font-weight:700;
 transition:0.4s;
 }
 
 .order-btn:hover{
 background:white;
 color:black;
+transform:scale(1.05);
 }
 
 /* CONTACT */
 
 .contact{
-padding:80px 20px;
-text-align:center;
 background:#111;
-}
-
-.contact h2{
-font-size:45px;
-margin-bottom:20px;
+text-align:center;
 }
 
 .contact p{
-font-size:20px;
-margin-bottom:20px;
+font-size:24px;
+margin-bottom:25px;
 }
 
 .contact a{
 color:#00aaff;
-font-size:22px;
+font-size:32px;
 text-decoration:none;
+font-weight:bold;
 }
 
 /* AI CHAT */
@@ -251,53 +296,62 @@ text-decoration:none;
 position:fixed;
 bottom:25px;
 right:20px;
-width:65px;
-height:65px;
+width:85px;
+height:85px;
 background:#00c853;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:30px;
+font-size:40px;
 cursor:pointer;
 z-index:9999;
+transition:0.3s;
+}
+
+#chatBtn:hover{
+transform:scale(1.1);
 }
 
 #chatBox{
 position:fixed;
-bottom:100px;
+bottom:120px;
 right:20px;
-width:320px;
-height:450px;
+width:420px;
+height:700px;
 background:#111;
-border-radius:20px;
+border-radius:25px;
 overflow:hidden;
 display:none;
 flex-direction:column;
-z-index:9999;
+z-index:99999;
+box-shadow:0 0 30px rgba(0,0,0,0.6);
 }
 
 .chat-header{
-background:#00aaff;
-padding:18px;
-font-size:20px;
-font-weight:bold;
+background:linear-gradient(90deg,#00aaff,#0066ff);
+padding:22px;
+font-size:30px;
+font-weight:800;
 display:flex;
 justify-content:space-between;
+align-items:center;
 }
 
 .chat-body{
 flex:1;
-padding:15px;
+padding:18px;
 overflow-y:auto;
 background:#181818;
 }
 
 .bot,.user{
-padding:12px 15px;
-margin:10px 0;
-border-radius:15px;
-max-width:80%;
+padding:16px 18px;
+margin:12px 0;
+border-radius:18px;
+max-width:85%;
+font-size:18px;
+line-height:1.6;
 }
 
 .bot{
@@ -311,47 +365,82 @@ margin-left:auto;
 
 .chat-input{
 display:flex;
-padding:10px;
+padding:15px;
 background:#111;
 }
 
 .chat-input input{
 flex:1;
-padding:12px;
+padding:16px;
 border:none;
 outline:none;
-border-radius:10px;
+border-radius:12px;
+font-size:18px;
 }
 
 .chat-input button{
 margin-left:10px;
-padding:12px 18px;
+padding:16px 22px;
 border:none;
 background:#00aaff;
 color:white;
-border-radius:10px;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* EFFECTS */
 
-@keyframes glow{
+@keyframes glowText{
 from{
 text-shadow:0 0 10px #00aaff;
 }
 to{
-text-shadow:0 0 30px #00aaff;
+text-shadow:
+0 0 20px #00aaff,
+0 0 40px #00aaff,
+0 0 60px #00aaff;
 }
 }
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(50px);
 }
 to{
 opacity:1;
 transform:translateY(0);
 }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:48px;
+}
+
+.hero-content p{
+font-size:18px;
+}
+
+.menu{
+font-size:50px;
+}
+
+.menu-link{
+font-size:32px;
+}
+
+#chatBox{
+width:95%;
+right:10px;
+height:600px;
+}
+
 }
 
 </style>
@@ -363,22 +452,27 @@ transform:translateY(0);
 
 <div id="menuBox">
 
-<div onclick="closeMenu()" style="font-size:40px;cursor:pointer;">
+<div onclick="closeMenu()"
+style="font-size:45px;cursor:pointer;color:white;">
 ✕
 </div>
 
 <a href="#home" class="menu-link">Home</a>
-<a href="#about" class="menu-link">About</a>
+
+<a href="#service" class="menu-link">Service</a>
+
 <a href="#products" class="menu-link">Products</a>
+
 <a href="#contact" class="menu-link">Contact</a>
 
 </div>
 
-<div class="menu" onclick="openMenu()">
+<div class="menu"
+onclick="openMenu()">
 ☰
 </div>
 
-<!-- HERO -->
+<!-- HOME -->
 
 <section class="hero" id="home">
 
@@ -392,26 +486,42 @@ Anime<br>
 </h1>
 
 <p>
-Premium anime models, wedding gifts and customized 3D printed designs.
+Premium anime models and customized gifts.
 </p>
 
-<a href="#products" class="hero-btn">
+<a href="#products"
+class="hero-btn">
+
 Explore Products
+
 </a>
 
 </div>
 
 </section>
 
-<!-- ABOUT -->
+<!-- SERVICE -->
 
-<section class="about" id="about">
+<section class="service" id="service">
 
-<h2>About Us</h2>
+<h2 class="section-title">
+Our Services
+</h2>
 
 <p>
-We create premium anime models, wedding gifts,
-customer gifts and customized 3D printed models with professional finishing.
+
+✅ Anime Model Printing <br><br>
+
+✅ Wedding Couple Gifts <br><br>
+
+✅ Customized Gifts <br><br>
+
+✅ Premium 3D Printing <br><br>
+
+✅ Personalized Name Models <br><br>
+
+✅ Creative Statue Printing
+
 </p>
 
 </section>
@@ -420,11 +530,13 @@ customer gifts and customized 3D printed models with professional finishing.
 
 <section class="products" id="products">
 
-<h2>Our Products</h2>
+<h2 class="section-title">
+Our Products
+</h2>
 
 <div class="product-scroll">
 
-<!-- CARD 1 -->
+<!-- PRODUCT 1 -->
 
 <div class="card">
 
@@ -432,7 +544,7 @@ customer gifts and customized 3D printed models with professional finishing.
 
 <div class="card-content">
 
-<h3>Anime Model</h3>
+<h3>Wedding Gift</h3>
 
 <div class="price">
 ₹599
@@ -448,7 +560,7 @@ Order Now
 </div>
 </div>
 
-<!-- CARD 2 -->
+<!-- PRODUCT 2 -->
 
 <div class="card">
 
@@ -456,7 +568,7 @@ Order Now
 
 <div class="card-content">
 
-<h3>Wedding Gift</h3>
+<h3>Custom Gift</h3>
 
 <div class="price">
 ₹799
@@ -472,7 +584,7 @@ Order Now
 </div>
 </div>
 
-<!-- CARD 3 -->
+<!-- PRODUCT 3 -->
 
 <div class="card">
 
@@ -480,10 +592,58 @@ Order Now
 
 <div class="card-content">
 
-<h3>Custom Gift</h3>
+<h3>Anime Model</h3>
 
 <div class="price">
 ₹999
+</div>
+
+<a href="https://wa.me/918891416068"
+class="order-btn">
+
+Order Now
+
+</a>
+
+</div>
+</div>
+
+<!-- PRODUCT 4 -->
+
+<div class="card">
+
+<img src="IMG-20260506-WA0033.jpg">
+
+<div class="card-content">
+
+<h3>Anime Statue</h3>
+
+<div class="price">
+₹1199
+</div>
+
+<a href="https://wa.me/918891416068"
+class="order-btn">
+
+Order Now
+
+</a>
+
+</div>
+</div>
+
+<!-- PRODUCT 5 -->
+
+<div class="card">
+
+<img src="IMG-20260506-WA0034.jpg">
+
+<div class="card-content">
+
+<h3>Couple Gift</h3>
+
+<div class="price">
+₹1499
 </div>
 
 <a href="https://wa.me/918891416068"
@@ -504,32 +664,42 @@ Order Now
 
 <section class="contact" id="contact">
 
-<h2>Contact</h2>
+<h2 class="section-title">
+Contact Us
+</h2>
 
 <p>
-For Orders Contact Us On WhatsApp
+Call or WhatsApp Anytime
 </p>
 
-<a href="https://wa.me/918891416068">
-+91 8891416068
+<a href="tel:+918891416068">
+📞 +91 8891416068
 </a>
 
 </section>
 
 <!-- AI CHAT -->
 
-<div id="chatBtn" onclick="openChat()">
+<div id="chatBtn"
+onclick="openChat()">
 💬
 </div>
 
 <div id="chatBox">
 
 <div class="chat-header">
+
 AI Assistant
-<span onclick="closeChat()" style="cursor:pointer;">✕</span>
+
+<span onclick="closeChat()"
+style="cursor:pointer;">
+✕
+</span>
+
 </div>
 
-<div class="chat-body" id="chatBody">
+<div class="chat-body"
+id="chatBody">
 
 <div class="bot">
 Hello 👋<br>
@@ -572,13 +742,15 @@ document.getElementById("chatBox").style.display="none";
 
 function sendMessage(){
 
-let input=document.getElementById("userInput");
+let input =
+document.getElementById("userInput");
 
-let message=input.value;
+let message = input.value;
 
 if(message.trim()==="") return;
 
-let chatBody=document.getElementById("chatBody");
+let chatBody =
+document.getElementById("chatBody");
 
 chatBody.innerHTML += `
 <div class="user">
@@ -586,7 +758,8 @@ ${message}
 </div>
 `;
 
-let reply="Please contact us on WhatsApp 😊";
+let reply =
+"Please contact us on WhatsApp 😊";
 
 if(message.toLowerCase().includes("price")){
 reply="Prices start from ₹599";
@@ -608,7 +781,8 @@ ${reply}
 
 input.value="";
 
-chatBody.scrollTop=chatBody.scrollHeight;
+chatBody.scrollTop =
+chatBody.scrollHeight;
 
 }
 
