@@ -790,3 +790,215 @@ chatBody.scrollHeight;
 
 </body>
 </html>
+<head>
+
+<!-- ========================= -->
+<!-- ADVANCED SECURITY HEADERS -->
+<!-- ========================= -->
+
+<meta charset="UTF-8">
+
+<meta http-equiv="Content-Security-Policy"
+content="
+default-src 'self';
+img-src 'self' https: data:;
+script-src 'self' 'unsafe-inline' https:;
+style-src 'self' 'unsafe-inline' https:;
+font-src https: data:;
+connect-src https:;
+frame-ancestors 'none';
+base-uri 'self';
+form-action 'self';
+upgrade-insecure-requests;
+">
+
+<meta http-equiv="X-Frame-Options"
+content="DENY">
+
+<meta http-equiv="X-Content-Type-Options"
+content="nosniff">
+
+<meta http-equiv="Referrer-Policy"
+content="strict-origin-when-cross-origin">
+
+<meta http-equiv="Permissions-Policy"
+content="
+camera=(),
+microphone=(),
+geolocation=(),
+payment=(),
+usb=(),
+fullscreen=(self)
+">
+
+<meta http-equiv="Cross-Origin-Embedder-Policy"
+content="require-corp">
+
+<meta http-equiv="Cross-Origin-Opener-Policy"
+content="same-origin">
+
+<meta http-equiv="Cross-Origin-Resource-Policy"
+content="same-origin">
+
+
+<!-- ========================= -->
+<!-- DISABLE RIGHT CLICK -->
+<!-- ========================= -->
+
+<script>
+
+document.addEventListener(
+'contextmenu',
+event => event.preventDefault()
+);
+
+</script>
+
+
+<!-- ========================= -->
+<!-- DISABLE DEVTOOLS -->
+<!-- ========================= -->
+
+<script>
+
+document.onkeydown = function(e){
+
+if(e.keyCode == 123){
+return false;
+}
+
+if(e.ctrlKey &&
+e.shiftKey &&
+e.keyCode == 'I'.charCodeAt(0)){
+return false;
+}
+
+if(e.ctrlKey &&
+e.shiftKey &&
+e.keyCode == 'J'.charCodeAt(0)){
+return false;
+}
+
+if(e.ctrlKey &&
+e.shiftKey &&
+e.keyCode == 'C'.charCodeAt(0)){
+return false;
+}
+
+if(e.ctrlKey &&
+e.keyCode == 'U'.charCodeAt(0)){
+return false;
+}
+
+if(e.ctrlKey &&
+e.keyCode == 'S'.charCodeAt(0)){
+return false;
+}
+
+};
+
+</script>
+
+
+<!-- ========================= -->
+<!-- DISABLE COPY -->
+<!-- ========================= -->
+
+<script>
+
+document.addEventListener('copy',
+function(e){
+e.preventDefault();
+});
+
+document.addEventListener('cut',
+function(e){
+e.preventDefault();
+});
+
+document.addEventListener('paste',
+function(e){
+e.preventDefault();
+});
+
+</script>
+
+
+<!-- ========================= -->
+<!-- DISABLE IMAGE DRAG -->
+<!-- ========================= -->
+
+<script>
+
+document.addEventListener(
+'dragstart',
+function(e){
+
+if(e.target.tagName === 'IMG'){
+e.preventDefault();
+}
+
+});
+
+</script>
+
+
+<!-- ========================= -->
+<!-- DEVTOOLS DETECTOR -->
+<!-- ========================= -->
+
+<script>
+
+setInterval(function(){
+
+const widthThreshold =
+window.outerWidth - window.innerWidth > 160;
+
+const heightThreshold =
+window.outerHeight - window.innerHeight > 160;
+
+if(widthThreshold || heightThreshold){
+
+document.body.innerHTML = `
+<div style="
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:black;
+color:white;
+font-size:40px;
+font-family:Poppins;
+text-align:center;
+padding:20px;
+">
+Security Blocked
+</div>
+`;
+
+}
+
+},1000);
+
+</script>
+
+
+<!-- ========================= -->
+<!-- TEXT SELECT DISABLE -->
+<!-- ========================= -->
+
+<style>
+
+body{
+-webkit-user-select:none;
+-ms-user-select:none;
+user-select:none;
+}
+
+img{
+pointer-events:none;
+}
+
+</style>
+
+<style>
