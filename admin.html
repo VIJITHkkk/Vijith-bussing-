@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LIVI Admin</title>
+<style>
+:root{--ink:#0f3d34;--paper:#f7f6f1;--line:#d7e3da;--pink:#c8a96a;--muted:#6a668a;--green:#1fa855}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--paper);color:#1d1a33;line-height:1.5}
+header{background:var(--ink);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
+header b{font-size:1.1rem}
+header button{background:none;border:1px solid #fff5;color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer}
+main{max-width:720px;margin:0 auto;padding:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+h2{font-size:1.1rem;margin-bottom:12px}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+input[type=text],input[type=number],input[type=password]{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem}
+input:focus{outline:2px solid #6c5ce7;border-color:transparent}
+button.b{background:var(--pink);color:#0f3d34;border:0;border-radius:10px;padding:12px 18px;font-size:1rem;font-weight:600;cursor:pointer;width:100%;margin-top:14px}
+button.b.green{background:var(--green);color:#fff}
+button.b:disabled{opacity:.5}
+.note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.prev{width:100%;max-height:220px;object-fit:cover;border-radius:10px;margin-top:10px;display:none}
+.item{display:grid;grid-template-columns:72px 1fr 96px auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}
+.item img{width:72px;height:72px;object-fit:cover;border-radius:10px;background:#eee}
+.item input{padding:8px 10px;font-size:.95rem}
+.del{background:none;border:0;color:#d33;font-size:1.3rem;cursor:pointer}
+.tag{font-size:.7rem;color:var(--pink)}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:10px;display:none;max-width:90%;z-index:10}
+.hide{display:none}
+@media(max-width:520px){.item{grid-template-columns:60px 1fr auto}.item .pr{grid-column:2}.item img{width:60px;height:60px}}
+</style>
+</head>
+<body>
+<header><b>LIVI Admin</b><button id="out" class="hide">Log out</button></header>
+<main>
+
+<section id="login" class="card">
+  <h2>Log in</h2>
+  <label for="tok">GitHub access token</label>
+  <input id="tok" type="password" autocomplete="off" placeholder="github_pat_...">
+  <button class="b" id="go">Log in</button>
+  <p class="note">The token stays only on this device. See the setup steps if you don't have one yet.</p>
+</section>
+
+<div id="panel" class="hide">
+  <section class="card">
+    <h2>Add a product</h2>
+    <label for="nn">Name</label><input id="nn" type="text" placeholder="e.g. Naruto Statue">
+    <label for="np">Price (₹)</label><input id="np" type="number" inputmode="numeric" placeholder="999">
+    <label for="nf">Photo</label><input id="nf" type="file" accept="image/*">
+    <img id="prev" class="prev" alt="Preview">
+    <button class="b" id="add">Add to list</button>
+  </section>
+
+  <section class="card">
+    <h2>Products on the website</h2>
+    <div id="list"></div>
+    <button class="b green" id="save">Save to website</button>
+    <p class="note">The website updates about 1 minute after saving. Photos are resized automatically.</p>
+  </section>
+</div>
+</main>
+<div id="toast"></div>
+
+<script>
+const OWNER='vijithkkk', REPO='Vijith-bussing-';
+let token=localStorage.getItem('livi_token')||'', items=[], sha=null;
+const $=id=>document.getElementById(id);
+const toast=(m,ms=3500)=>{const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display='none',ms)};
+const gh=(path,opt={})=>fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,{...opt,headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json','Content-Type':'application/json'}});
+const b64=s=>{const b=new TextEncoder().encode(s);let r='';b.forEach(x=>r+=String.fromCharCode(x));return btoa(r)};
+const unb64=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,'')),c=>c.charCodeAt(0)));
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+async function load(){
+  const r=await gh('products.json?t='+Date.now());
+  if(r.status===401||r.status===403){throw new Error('Token not valid for this repo')}
+  if(r.status===404){items=[];sha=null;return}
+  const j=await r.json();sha=j.sha;items=JSON.parse(unb64(j.content));
+}
+function draw(){
+  $('list').innerHTML=items.length?items.map((p,i)=>`
+   <div class="item">
+     <img src="${p._data||esc(p.image)}" alt="">
+     <div><input type="text" value="${esc(p.name)}" data-i="${i}" data-k="name" aria-label="Name">${p._data?'<span class="tag">New, not saved yet</span>':''}</div>
+     <div class="pr"><input type="number" inputmode="numeric" value="${p.price}" data-i="${i}" data-k="price" aria-label="Price"></div>
+     <button class="del" data-del="${i}" aria-label="Delete">🗑</button>
+   </div>`).join(''):'<p class="note">No products yet.</p>';
+}
+$('list').addEventListener('input',e=>{const i=e.target.dataset.i;if(i!==undefined)items[i][e.target.dataset.k]=e.target.dataset.k==='price'?Number(e.target.value):e.target.value});
+$('list').addEventListener('click',e=>{const d=e.target.dataset.del;if(d!==undefined&&confirm('Delete this product?')){items.splice(d,1);draw()}});
+
+function resize(file){return new Promise((res,rej)=>{
+  const img=new Image(),u=URL.createObjectURL(file);
+  img.onload=()=>{const m=1000,s=Math.min(1,m/Math.max(img.width,img.height));
+    const c=document.createElement('canvas');c.width=img.width*s;c.height=img.height*s;
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.85))};
+  img.onerror=()=>rej(new Error('Could not read this image'));img.src=u})}
+
+let newImg=null;
+$('nf').addEventListener('change',async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{newImg=await resize(f);$('prev').src=newImg;$('prev').style.display='block'}catch(x){toast(x.message)}
+});
+$('add').onclick=()=>{
+  const name=$('nn').value.trim(),price=Number($('np').value);
+  if(!name||!price||!newImg){toast('Enter name, price and choose a photo');return}
+  items.push({id:'p'+Date.now(),name,price,image:'',_data:newImg});
+  $('nn').value='';$('np').value='';$('nf').value='';$('prev').style.display='none';newImg=null;draw();
+  toast('Added. Tap "Save to website" to publish.');
+};
+
+$('save').onclick=async()=>{
+  const btn=$('save');btn.disabled=true;btn.textContent='Saving…';
+  try{
+    for(const p of items){
+      if(p._data){
+        const path='images/'+p.id+'.jpg';
+        const r=await gh(path,{method:'PUT',body:JSON.stringify({message:'Add photo '+p.name,content:p._data.split(',')[1]})});
+        if(!r.ok)throw new Error('Photo upload failed ('+r.status+')');
+        p.image=path;delete p._data;
+      }
+    }
+    const clean=items.map(({id,name,price,image})=>({id,name,price:Number(price),image}));
+    const body={message:'Update products',content:b64(JSON.stringify(clean,null,2))};
+    if(sha)body.sha=sha;
+    const r=await gh('products.json',{method:'PUT',body:JSON.stringify(body)});
+    if(!r.ok)throw new Error('Save failed ('+r.status+')');
+    sha=(await r.json()).content.sha;draw();
+    toast('Saved. Website updates in about 1 minute.',5000);
+  }catch(e){toast(e.message,6000)}
+  btn.disabled=false;btn.textContent='Save to website';
+};
+
+async function enter(){
+  try{await load();$('login').classList.add('hide');$('panel').classList.remove('hide');$('out').classList.remove('hide');draw()}
+  catch(e){toast(e.message||'Login failed');localStorage.removeItem('livi_token');token=''}
+}
+$('go').onclick=()=>{token=$('tok').value.trim();if(!token){toast('Paste your token');return}localStorage.setItem('livi_token',token);enter()};
+$('out').onclick=()=>{localStorage.removeItem('livi_token');location.reload()};
+if(token)enter();
+</script>
+</body>
+</html>
