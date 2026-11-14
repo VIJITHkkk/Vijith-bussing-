@@ -16,5 +16,23 @@
     "name": "Girl",
     "price": 900,
     "image": "images/p1794685968495.jpg"
+  },
+  {
+    "id": "p1794687071081",
+    "name": "Moon night",
+    "price": 250,
+    "image": "images/p1794687071081.jpg"
+  },
+  {
+    "id": "p1794687090175",
+    "name": "Boy",
+    "price": 450,
+    "image": "images/p1794687090175.jpg"
+  },
+  {
+    "id": "p1794687106113",
+    "name": "Warrior",
+    "price": 1000,
+    "image": "images/p1794687106113.jpg"
   }
 ]
