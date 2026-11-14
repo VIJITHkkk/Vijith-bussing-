@@ -10,5 +10,11 @@
     "name": "Girl",
     "price": 1800,
     "image": "images/p1794685175497.jpg"
+  },
+  {
+    "id": "p1794685968495",
+    "name": "Girl",
+    "price": 900,
+    "image": "images/p1794685968495.jpg"
   }
 ]
