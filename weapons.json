@@ -59,5 +59,12 @@
     "name": "Asta demon sword",
     "price": 199,
     "image": "images/w1794760757873-1794760763085.jpg"
+  },
+  {
+    "id": "w1794760853376",
+    "type": "sword",
+    "name": "Yunos sword",
+    "price": 299,
+    "image": "images/w1794760853376-1794760857463.jpg"
   }
 ]
