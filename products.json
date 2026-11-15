@@ -58,5 +58,11 @@
     "name": "Zoro three sword style",
     "price": 1500,
     "image": "images/p1794744123435.jpg"
+  },
+  {
+    "id": "p1794744368597",
+    "name": "Guytaro",
+    "price": 799,
+    "image": "images/p1794744368597.jpg"
   }
 ]
