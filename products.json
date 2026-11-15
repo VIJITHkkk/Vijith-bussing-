@@ -64,5 +64,11 @@
     "name": "Guytaro",
     "price": 799,
     "image": "images/p1794744368597.jpg"
+  },
+  {
+    "id": "p1794744528556",
+    "name": "Zenitsu",
+    "price": 599,
+    "image": "images/p1794744528556.jpg"
   }
 ]
