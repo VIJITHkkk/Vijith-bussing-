@@ -52,5 +52,11 @@
     "name": "Rangoku",
     "price": 900,
     "image": "images/p1794743931875.jpg"
+  },
+  {
+    "id": "p1794744123435",
+    "name": "Zoro three sword style",
+    "price": 1500,
+    "image": "images/p1794744123435.jpg"
   }
 ]
