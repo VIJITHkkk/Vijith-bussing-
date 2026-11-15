@@ -34,5 +34,11 @@
     "name": "Warrior",
     "price": 1000,
     "image": "images/p1794687106113.jpg"
+  },
+  {
+    "id": "p1794743763250",
+    "name": "Tanjiro",
+    "price": 1000,
+    "image": "images/p1794743763250.jpg"
   }
 ]
