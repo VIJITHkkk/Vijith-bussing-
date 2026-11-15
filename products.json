@@ -94,5 +94,11 @@
     "name": "Naruto",
     "price": 1000,
     "image": "images/p1794757138641.jpg"
+  },
+  {
+    "id": "p1794759790069",
+    "name": "Yami",
+    "price": 2500,
+    "image": "images/p1794759790069.jpg"
   }
 ]
