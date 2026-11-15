@@ -40,5 +40,11 @@
     "name": "Tanjiro",
     "price": 1000,
     "image": "images/p1794743822899.jpg"
+  },
+  {
+    "id": "p1794743865132",
+    "name": "Inosuke",
+    "price": 800,
+    "image": "images/p1794743865132.jpg"
   }
 ]
