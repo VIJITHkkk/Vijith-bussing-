@@ -70,5 +70,11 @@
     "name": "Zenitsu",
     "price": 599,
     "image": "images/p1794744528556.jpg"
+  },
+  {
+    "id": "p1794744634638",
+    "name": "Muichiro",
+    "price": 999,
+    "image": "images/p1794744634638.jpg"
   }
 ]
