@@ -52,5 +52,12 @@
     "type": "dagger",
     "name": "Shadow Dagger",
     "price": 899
+  },
+  {
+    "id": "w1794760757873",
+    "type": "sword",
+    "name": "Asta demon sword",
+    "price": 199,
+    "image": "images/w1794760757873-1794760763085.jpg"
   }
 ]
