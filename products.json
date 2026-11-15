@@ -124,5 +124,11 @@
     "name": "Noelle",
     "price": 599,
     "image": "images/p1794760284283.jpg"
+  },
+  {
+    "id": "p1794760585444",
+    "name": "Mereoleona",
+    "price": 299,
+    "image": "images/p1794760585444.jpg"
   }
 ]
