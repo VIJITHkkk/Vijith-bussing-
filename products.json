@@ -118,5 +118,11 @@
     "name": "Nero",
     "price": 499,
     "image": "images/p1794760186833.jpg"
+  },
+  {
+    "id": "p1794760284283",
+    "name": "Noelle",
+    "price": 599,
+    "image": "images/p1794760284283.jpg"
   }
 ]
