@@ -100,5 +100,11 @@
     "name": "Yami",
     "price": 2500,
     "image": "images/p1794759790069.jpg"
+  },
+  {
+    "id": "p1794759889036",
+    "name": "Asta",
+    "price": 899,
+    "image": "images/p1794759889036.jpg"
   }
 ]
