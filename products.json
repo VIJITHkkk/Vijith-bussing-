@@ -106,5 +106,11 @@
     "name": "Asta",
     "price": 899,
     "image": "images/p1794759889036.jpg"
+  },
+  {
+    "id": "p1794760081019",
+    "name": "Liebe",
+    "price": 599,
+    "image": "images/p1794760081019.jpg"
   }
 ]
