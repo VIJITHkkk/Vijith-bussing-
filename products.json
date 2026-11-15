@@ -130,5 +130,11 @@
     "name": "Mereoleona",
     "price": 299,
     "image": "images/p1794760585444.jpg"
+  },
+  {
+    "id": "p1794761674685",
+    "name": "Luffy & shanks",
+    "price": 999,
+    "image": "images/p1794761674685.jpg"
   }
 ]
