@@ -112,5 +112,11 @@
     "name": "Liebe",
     "price": 599,
     "image": "images/p1794760081019.jpg"
+  },
+  {
+    "id": "p1794760186833",
+    "name": "Nero",
+    "price": 499,
+    "image": "images/p1794760186833.jpg"
   }
 ]
