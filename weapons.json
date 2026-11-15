@@ -80,5 +80,19 @@
     "name": "Customised black clover sword & Katana",
     "price": 299,
     "image": "images/w1794761135408-1794761140645.jpg"
+  },
+  {
+    "id": "w1794761302006",
+    "type": "axe",
+    "name": "Tengen sword",
+    "price": 1100,
+    "image": "images/w1794761302006-1794761427261.jpg"
+  },
+  {
+    "id": "w1794761417753",
+    "type": "sword",
+    "name": "Customised  Demon slayer sword",
+    "price": 299,
+    "image": "images/w1794761417753-1794761429497.jpg"
   }
 ]
