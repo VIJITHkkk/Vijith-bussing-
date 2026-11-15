@@ -1,0 +1,56 @@
+[
+  {
+    "id": "w1",
+    "type": "sword",
+    "name": "Hero Sword",
+    "price": 1499,
+    "image": "images/w1-1794719697233.jpg"
+  },
+  {
+    "id": "w2",
+    "type": "axe",
+    "name": "Battle Axe",
+    "price": 1799,
+    "image": "images/w2-1794719699378.jpg"
+  },
+  {
+    "id": "w3",
+    "type": "bow",
+    "name": "Hunter Bow",
+    "price": 1299,
+    "image": "images/w3-1794719701380.jpg"
+  },
+  {
+    "id": "w4",
+    "type": "hammer",
+    "name": "War Hammer",
+    "price": 1999,
+    "image": "images/w4-1794719703270.jpg"
+  },
+  {
+    "id": "w5",
+    "type": "spear",
+    "name": "Dragon Spear",
+    "price": 1699,
+    "image": "images/w5-1794719705626.jpg"
+  },
+  {
+    "id": "w6",
+    "type": "shield",
+    "name": "Guardian Shield",
+    "price": 1599,
+    "image": "images/w6-1794719707842.jpg"
+  },
+  {
+    "id": "w7",
+    "type": "staff",
+    "name": "Magic Staff",
+    "price": 1399
+  },
+  {
+    "id": "w8",
+    "type": "dagger",
+    "name": "Shadow Dagger",
+    "price": 899
+  }
+]
