@@ -66,5 +66,19 @@
     "name": "Yunos sword",
     "price": 299,
     "image": "images/w1794760853376-1794760857463.jpg"
+  },
+  {
+    "id": "w1794760965777",
+    "type": "sword",
+    "name": "Demon dweller",
+    "price": 599,
+    "image": "images/w1794760965777-1794761138746.jpg"
+  },
+  {
+    "id": "w1794761135408",
+    "type": "sword",
+    "name": "Customised black clover sword & Katana",
+    "price": 299,
+    "image": "images/w1794761135408-1794761140645.jpg"
   }
 ]
