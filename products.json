@@ -88,5 +88,11 @@
     "name": "Customised anime figures",
     "price": 599,
     "image": "images/p1794744863619.jpg"
+  },
+  {
+    "id": "p1794757138641",
+    "name": "Naruto",
+    "price": 1000,
+    "image": "images/p1794757138641.jpg"
   }
 ]
