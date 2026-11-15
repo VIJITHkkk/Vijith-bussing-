@@ -46,5 +46,11 @@
     "name": "Inosuke",
     "price": 800,
     "image": "images/p1794743865132.jpg"
+  },
+  {
+    "id": "p1794743931875",
+    "name": "Rangoku",
+    "price": 900,
+    "image": "images/p1794743931875.jpg"
   }
 ]
