@@ -23,21 +23,21 @@
   {
     "id": "w4",
     "type": "hammer",
-    "name": "War Hammer",
+    "name": "War stick",
     "price": 1999,
     "image": "images/w4-1794719703270.jpg"
   },
   {
     "id": "w5",
-    "type": "spear",
-    "name": "Dragon Spear",
+    "type": "sword",
+    "name": "Dragon sword ",
     "price": 1699,
     "image": "images/w5-1794719705626.jpg"
   },
   {
     "id": "w6",
     "type": "shield",
-    "name": "Guardian Shield",
+    "name": "Guardian stick",
     "price": 1599,
     "image": "images/w6-1794719707842.jpg"
   },
