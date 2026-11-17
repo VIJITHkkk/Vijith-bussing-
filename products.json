@@ -142,5 +142,17 @@
     "name": "One piece customised characters",
     "price": 599,
     "image": "images/p1794761788558.jpg"
+  },
+  {
+    "id": "p1794932251216",
+    "name": "Ichigo kurosaki figure",
+    "price": 1000,
+    "image": "images/p1794932251216.jpg"
+  },
+  {
+    "id": "p1794932360390",
+    "name": "Bleach customised characters",
+    "price": 599,
+    "image": "images/p1794932360390.jpg"
   }
 ]
