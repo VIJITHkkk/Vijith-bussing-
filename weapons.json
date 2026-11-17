@@ -110,5 +110,12 @@
     "name": "Kikoru axe weapon",
     "price": 500,
     "image": "images/w1794933061280-1794933067414.jpg"
+  },
+  {
+    "id": "w1794933157174",
+    "type": "axe",
+    "name": "Customised kaiju no.8 weapon ⚔️",
+    "price": 400,
+    "image": "images/w1794933157174-1794933160252.jpg"
   }
 ]
