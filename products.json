@@ -154,5 +154,17 @@
     "name": "Bleach customised characters",
     "price": 599,
     "image": "images/p1794932360390.jpg"
+  },
+  {
+    "id": "p1794933250906",
+    "name": "Kaiju no.8",
+    "price": 1500,
+    "image": "images/p1794933250906.jpg"
+  },
+  {
+    "id": "p1794933344582",
+    "name": "Customised kaiju no.8 characters",
+    "price": 500,
+    "image": "images/p1794933344582.jpg"
   }
 ]
