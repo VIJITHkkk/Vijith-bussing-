@@ -82,5 +82,19 @@
     "name": "Customised  Demon slayer sword",
     "price": 299,
     "image": "images/w1794761417753-1794761429497.jpg"
+  },
+  {
+    "id": "w1794932515800",
+    "type": "sword",
+    "name": "Ichigo sword",
+    "price": 700,
+    "image": "images/w1794932515800-1794932628356.jpg"
+  },
+  {
+    "id": "w1794932625896",
+    "type": "sword",
+    "name": "Customised bleach sword ⚔️",
+    "price": 300,
+    "image": "images/w1794932625896-1794932630710.jpg"
   }
 ]
