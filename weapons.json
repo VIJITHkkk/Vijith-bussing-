@@ -96,5 +96,19 @@
     "name": "Customised bleach sword ⚔️",
     "price": 300,
     "image": "images/w1794932625896-1794932630710.jpg"
+  },
+  {
+    "id": "w1794932891435",
+    "type": "dagger",
+    "name": "Narumi exclusive weapon 🗡️",
+    "price": 400,
+    "image": "images/w1794932891435-1794933064950.jpg"
+  },
+  {
+    "id": "w1794933061280",
+    "type": "axe",
+    "name": "Kikoru axe weapon",
+    "price": 500,
+    "image": "images/w1794933061280-1794933067414.jpg"
   }
 ]
